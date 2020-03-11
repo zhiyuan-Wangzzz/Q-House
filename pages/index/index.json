@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-dialog": "../../lib/weui-miniprogram/dialog/dialog",
+    "mp-tabbar": "../../lib/weui-miniprogram/tabbar/tabbar"
+  },
+  "navigationBarTitleText": "laoma"
+}

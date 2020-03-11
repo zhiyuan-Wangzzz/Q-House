@@ -1,0 +1,10 @@
+<!--pages/math/math.wxml-->
+<view>
+  <mp-cells title="章节">
+    <mp-cell link hover value="有hover效果" footer="说明文字">
+      <!-- <image slot="title" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image> -->
+    </mp-cell>
+    <mp-cell link hover value="有hover效果" footer="说明文字">
+    </mp-cell>
+  </mp-cells>
+</view>

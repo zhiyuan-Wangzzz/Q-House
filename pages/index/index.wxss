@@ -1,0 +1,16 @@
+/**index.wxss**/
+.card{
+  width: 80%;
+  height: 100px;
+  box-shadow: 0 5rpx 20rpx #ddd;
+  border-radius: 10px;
+  margin-bottom: 50rpx;
+  text-align: center;
+  
+}
+.light-blue{
+    background-color: rgb(198,226,255);
+}
+.light-red{
+  background-color:rgb(253, 226,226) ;
+}
