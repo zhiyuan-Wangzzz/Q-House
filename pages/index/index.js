@@ -20,7 +20,26 @@ Page({
       "iconPath": "/page/weui/images/tabbar_icon_setting_default.png",
       "selectedIconPath": "/page/weui/images/tabbar_icon_setting_active.png",
       badge: 'laoma'
-    }]
+    }],
+      radioItems: [
+        { name: 'cell standard', value: '0', checked: true },
+        { name: 'cell standard', value: '1' }
+      ],
+      checkboxItems: [
+        { name: 'standard is dealt for u.', value: '0', checked: true },
+        { name: 'standard is dealicient for u.', value: '1' }
+      ],
+    slideButtons: [ {
+      text: '完成',
+      extClass: 'test',
+    }, {
+      type: 'warn',
+      text: '删除',
+      extClass: 'test',
+    }],
+    array:[{title:'1',content:'c1'},
+      { title: '2', content: 'c2' },
+      { title: '3', content: 'c3' }]
   },
   tapMath(){
     wx.navigateTo({
@@ -33,6 +52,14 @@ Page({
       tabIndex:e.detail.index
     })
     console.log(this.data.tabIndex)
+  },
+  slideButtonTap(e) {
+    this.data.array.shift()
+    var arr=this.data.array
+    this.setData({
+      array:arr
+    })
+    console.log(this.data.array)
   },
   //事件处理函数
   bindViewTap: function() {

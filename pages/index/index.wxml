@@ -1,12 +1,27 @@
 <!--index.wxml-->
-<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>
 <view class="container" wx:if="{{tabIndex===0}}">
-  <view class="card light-blue"><strong>逻辑</strong></view>
-  <view class="card light-red" bindtap="tapMath">数学</view>
-  <view class="card light-blue">英语</view>
-  <view class="card light-red">作文</view>
+  <card custom-class="light-blue main-card" bindtap="tapMath">数学</card>
+  <card custom-class="light-red main-card">逻辑</card>
+  <card custom-class="light-blue main-card">英语</card>
+  <card custom-class="light-red main-card">作文</card>
+</view>
 
-</view>
 <view wx:if="{{tabIndex===1}}">
-打卡
+  <view class="task-card-container">
+    <card custom-class="task-card light-blue">添加任务</card>
+    <card custom-class="task-card light-red">已完成</card>
+  </view>
+  <!-- <mp-cells title="复选列表项">
+    <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="checkboxChange">
+        <mp-checkbox wx:for="{{checkboxItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+    </mp-checkbox-group>
+</mp-cells> -->
+  <view>
+    <view wx:for="{{array}}">
+      <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+        <mp-cell value="{{item.title}}" footer="{{item.content}}"></mp-cell>
+      </mp-slideview>
+    </view>
+  </view>
 </view>
+  <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>

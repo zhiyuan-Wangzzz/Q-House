@@ -1,5 +1,5 @@
 /**index.wxss**/
-.card{
+/* .card{
   width: 80%;
   height: 100px;
   box-shadow: 0 5rpx 20rpx #ddd;
@@ -7,10 +7,28 @@
   margin-bottom: 50rpx;
   text-align: center;
   
+} */
+.main-card{
+  width: 600rpx;
+  height: 150rpx;
 }
 .light-blue{
     background-color: rgb(198,226,255);
 }
 .light-red{
   background-color:rgb(253, 226,226) ;
+}
+.task-card-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+.task-card{
+  width: 250rpx;
+}
+.test{
+  background-color: green;
 }

@@ -1,7 +1,13 @@
 {
   "usingComponents": {
     "mp-dialog": "../../lib/weui-miniprogram/dialog/dialog",
-    "mp-tabbar": "../../lib/weui-miniprogram/tabbar/tabbar"
+    "mp-tabbar": "../../lib/weui-miniprogram/tabbar/tabbar",
+    "card":"../../components/card/card",
+    "mp-checkbox-group": "../../lib/weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-checkbox": "../../lib/weui-miniprogram/checkbox/checkbox",
+    "mp-cells": "../../lib/weui-miniprogram/cells/cells",
+    "mp-cell": "../../lib/weui-miniprogram/cell/cell",
+    "mp-slideview": "../../lib/weui-miniprogram/slideview/slideview"
   },
   "navigationBarTitleText": "laoma"
 }

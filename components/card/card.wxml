@@ -1,0 +1,4 @@
+<!--components/card.wxml-->
+<view class="card custom-class" style="flex-direction:row;">
+<slot></slot>
+</view>

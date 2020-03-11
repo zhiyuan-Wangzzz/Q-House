@@ -1,0 +1,7 @@
+/* components/card.wxss */
+.card{
+  box-shadow: 0 5rpx 20rpx #ddd;
+  border-radius: 10px;
+  margin-bottom: 30rpx;
+  padding: 40rpx;
+}
