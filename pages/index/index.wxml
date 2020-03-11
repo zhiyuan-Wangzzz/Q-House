@@ -1,9 +1,12 @@
 <!--index.wxml-->
-<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange"></mp-tabbar>
-<view class="container">
+<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>
+<view class="container" wx:if="{{tabIndex===0}}">
   <view class="card light-blue"><strong>逻辑</strong></view>
   <view class="card light-red" bindtap="tapMath">数学</view>
   <view class="card light-blue">英语</view>
   <view class="card light-red">作文</view>
 
+</view>
+<view wx:if="{{tabIndex===1}}">
+打卡
 </view>

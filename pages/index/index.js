@@ -8,6 +8,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    tabIndex:0,
     list: [{
       "text": "题库",
       "iconPath": "./lib/weui/icon/tabbar_icon_chat_default.png",
@@ -28,6 +29,10 @@ Page({
   },
   tabChange(e) {
     console.log('tab change', e)
+    this.setData({
+      tabIndex:e.detail.index
+    })
+    console.log(this.data.tabIndex)
   },
   //事件处理函数
   bindViewTap: function() {

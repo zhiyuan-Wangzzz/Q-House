@@ -1,4 +1,5 @@
 <!--pages/math/math.wxml-->
+<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange"></mp-tabbar>
 <view>
   <mp-cells title="章节">
     <mp-cell link hover value="有hover效果" footer="说明文字">
