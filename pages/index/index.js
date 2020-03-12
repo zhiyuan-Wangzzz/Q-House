@@ -11,14 +11,14 @@ Page({
     tabIndex:0,
     list: [{
       "text": "题库",
-      "iconPath": "./lib/weui/icon/tabbar_icon_chat_default.png",
-      "selectedIconPath": "/page/weui/images/tabbar_icon_chat_active.png",
+      "iconPath": "../../../image/icon_API.png",
+      "selectedIconPath": "../../../image/icon_API_HL.png",
       dot: true
     },
     {
       "text": "打卡",
-      "iconPath": "/page/weui/images/tabbar_icon_setting_default.png",
-      "selectedIconPath": "/page/weui/images/tabbar_icon_setting_active.png",
+      "iconPath": "../../../image/icon_component.png",
+      "selectedIconPath": "../../../image/icon_component_HL.png",
       badge: 'laoma'
     }],
       radioItems: [
@@ -54,7 +54,7 @@ Page({
     console.log(this.data.tabIndex)
   },
   slideButtonTap(e) {
-    this.data.array.shift()
+    this.data.array.splice(e.target.id,1)
     var arr=this.data.array
     this.setData({
       array:arr

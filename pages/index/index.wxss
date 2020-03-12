@@ -11,6 +11,9 @@
 .main-card{
   width: 600rpx;
   height: 150rpx;
+  font-size: 45rpx;
+  text-align: center;
+  color: #222;
 }
 .light-blue{
     background-color: rgb(198,226,255);
@@ -31,4 +34,8 @@
 }
 .test{
   background-color: green;
+}
+.tabbar{
+  background-color: green;
+  font-size: 200rpx;
 }

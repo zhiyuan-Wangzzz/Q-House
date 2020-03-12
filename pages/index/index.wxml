@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <view class="container" wx:if="{{tabIndex===0}}">
-  <card custom-class="light-blue main-card" bindtap="tapMath">数学</card>
-  <card custom-class="light-red main-card">逻辑</card>
-  <card custom-class="light-blue main-card">英语</card>
-  <card custom-class="light-red main-card">作文</card>
+  <card custom-class="light-blue main-card" bindtap="tapMath">数  学</card>
+  <card custom-class="light-red main-card">逻  辑</card>
+  <card custom-class="light-blue main-card">英  语</card>
+  <card custom-class="light-red main-card">作  文</card>
 </view>
 
 <view wx:if="{{tabIndex===1}}">
@@ -18,10 +18,12 @@
 </mp-cells> -->
   <view>
     <view wx:for="{{array}}">
-      <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
-        <mp-cell value="{{item.title}}" footer="{{item.content}}"></mp-cell>
+      <mp-slideview  id="{{index}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+        <mp-cell  value="{{item.title}}" >
+        <mp-icon slot="footer" icon="done"></mp-icon>
+        </mp-cell>
       </mp-slideview>
     </view>
   </view>
 </view>
-  <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>
+  <mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}" ></mp-tabbar>
