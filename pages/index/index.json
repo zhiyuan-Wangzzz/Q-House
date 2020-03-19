@@ -8,7 +8,9 @@
     "mp-cells": "../../lib/weui-miniprogram/cells/cells",
     "mp-cell": "../../lib/weui-miniprogram/cell/cell",
     "mp-slideview": "../../lib/weui-miniprogram/slideview/slideview",
-    "mp-icon":"../../lib/weui-miniprogram/icon/icon"
+    "mp-icon":"../../lib/weui-miniprogram/icon/icon",
+    "mp-form": "../../lib/weui-miniprogram/form/form"
+
   },
   "navigationBarTitleText": "laoma"
 }

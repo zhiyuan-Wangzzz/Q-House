@@ -1,29 +1,31 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container" wx:if="{{tabIndex===0}}">
   <card custom-class="light-blue main-card" bindtap="tapMath">数  学</card>
   <card custom-class="light-red main-card">逻  辑</card>
   <card custom-class="light-blue main-card">英  语</card>
   <card custom-class="light-red main-card">作  文</card>
 </view>
-
 <view wx:if="{{tabIndex===1}}">
   <view class="task-card-container">
-    <card custom-class="task-card light-blue">添加任务</card>
-    <card custom-class="task-card light-red">已完成</card>
+    <card custom-class="task-card" bind:tap="showAddTask">添加任务</card>
+    <card custom-class="task-card">已完成</card>
   </view>
-  <!-- <mp-cells title="复选列表项">
-    <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="checkboxChange">
-        <mp-checkbox wx:for="{{checkboxItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
-    </mp-checkbox-group>
-</mp-cells> -->
   <view>
-    <view wx:for="{{array}}">
-      <mp-slideview  id="{{index}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
-        <mp-cell  value="{{item.title}}" >
-        <mp-icon slot="footer" icon="done"></mp-icon>
+    <view wx:for="{{tasks}}" wx:key="title">
+      <mp-slideview id="{{index}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+        <mp-cell value="{{item.title}}">
+          <mp-icon slot="footer" icon="time" wx:if="{{!item.done}}" data-index="{{index}}" bind:tap="doneTap"></mp-icon>
+          <mp-icon slot="footer" icon="done" color="green" wx:if="{{item.done}}"></mp-icon>
         </mp-cell>
       </mp-slideview>
     </view>
   </view>
+  <mp-dialog title="添加任务" show="{{showAddTaskDialog}}" bindbuttontap="confirmAddTask" buttons="{{dialogButtons}}">
+    <view>
+     
+      <input class="input" bindinput="contentInputChange" placeholder="任务内容" />
+    
+    </view>
+  </mp-dialog>
 </view>
-  <mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}" ></mp-tabbar>
+<mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>

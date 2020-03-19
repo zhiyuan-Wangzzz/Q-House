@@ -39,3 +39,7 @@
   background-color: green;
   font-size: 200rpx;
 }
+.input{
+  border-width: 2px;
+  
+}
