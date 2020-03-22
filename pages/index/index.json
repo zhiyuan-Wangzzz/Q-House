@@ -9,8 +9,10 @@
     "mp-cell": "../../lib/weui-miniprogram/cell/cell",
     "mp-slideview": "../../lib/weui-miniprogram/slideview/slideview",
     "mp-icon":"../../lib/weui-miniprogram/icon/icon",
-    "mp-form": "../../lib/weui-miniprogram/form/form"
+    "mp-form": "../../lib/weui-miniprogram/form/form",
+    "mp-halfScreenDialog": "../../lib/weui-miniprogram/half-screen-dialog/half-screen-dialog"
 
   },
-  "navigationBarTitleText": "laoma"
+  "navigationBarTitleText": "laoma",
+  "enablePullDownRefresh": true
 }

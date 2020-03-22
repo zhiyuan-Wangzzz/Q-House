@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/math/math"
+    "pages/math/math",
+    "pages/addtask"
   ],
   "window": {
     "backgroundTextStyle": "light",

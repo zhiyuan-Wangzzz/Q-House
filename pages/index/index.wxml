@@ -1,31 +1,39 @@
 <!-- index.wxml -->
 <view class="container" wx:if="{{tabIndex===0}}">
-  <card custom-class="light-blue main-card" bindtap="tapMath">数  学</card>
-  <card custom-class="light-red main-card">逻  辑</card>
-  <card custom-class="light-blue main-card">英  语</card>
-  <card custom-class="light-red main-card">作  文</card>
+  <card custom-class="main-card" bindtap="tapMath">数  学</card>
+  <card custom-class="main-card">逻  辑</card>
+  <card custom-class="main-card">英  语</card>
+  <card custom-class="main-card">作  文</card>
 </view>
 <view wx:if="{{tabIndex===1}}">
   <view class="task-card-container">
     <card custom-class="task-card" bind:tap="showAddTask">添加任务</card>
     <card custom-class="task-card">已完成</card>
   </view>
-  <view>
+  <!-- <view>
     <view wx:for="{{tasks}}" wx:key="title">
       <mp-slideview id="{{index}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
         <mp-cell value="{{item.title}}">
           <mp-icon slot="footer" icon="time" wx:if="{{!item.done}}" data-index="{{index}}" bind:tap="doneTap"></mp-icon>
-          <mp-icon slot="footer" icon="done" color="green" wx:if="{{item.done}}"></mp-icon>
+          <mp-icon slot="footer" icon="done" color="green" wx:if="{{item.done}}" data-index="{{index}}" bind:tap="doneTap"></mp-icon>
         </mp-cell>
       </mp-slideview>
     </view>
+  </view> -->
+  <view wx:for="{{tasks}}">
+    <mp-cells title="{{item[0].createdAt}}">
+      <mp-checkbox-group prop="radio" multi="{{true}}" bindchange="radioChange">
+        <mp-checkbox wx:for="{{item}}" label="{{item.content}}" checked="{{item.status===1}}"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
   </view>
-  <mp-dialog title="添加任务" show="{{showAddTaskDialog}}" bindbuttontap="confirmAddTask" buttons="{{dialogButtons}}">
-    <view>
-     
-      <input class="input" bindinput="contentInputChange" placeholder="任务内容" />
-    
-    </view>
-  </mp-dialog>
 </view>
 <mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>
+<mp-halfScreenDialog  bindbuttontap="buttontap" show="{{show}}" maskClosable="{{true}}" buttons="{{buttons}}">
+  <view slot="title">添加任务</view>
+  <view slot="desc">
+    <mp-cell>
+      <input bindinput="formInputChange" data-field="qq" class="weui-input" placeholder="输入任务内容" />
+    </mp-cell>
+  </view>
+</mp-halfScreenDialog>

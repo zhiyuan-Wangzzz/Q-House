@@ -1,5 +1,7 @@
+import * as http from "../../network/index";
 Page({
   data: {
+    tasks: {},
     tabIndex: 0,
     showAddTaskDialog: false,
     list: [
@@ -23,12 +25,22 @@ Page({
         extClass: "test"
       }
     ],
-    tasks: [
-      { title: "1", content: "c1", done: false },
-      { title: "2", content: "c2", done: false },
-      { title: "3", content: "c3", done: false }
-    ],
-    dialogButtons: [{ text: "取消" }, { text: "确定" }]
+    //todo title太长
+    dialogButtons: [{ text: "取消" }, { text: "确定" }],
+
+    show: false,
+        buttons: [
+            {
+                type: 'default',
+                text: '取消',
+                value: 0
+            },
+            {
+                type: 'primary',
+                text: '确认',
+                value: 1
+            }
+        ]
   },
   tapMath() {
     wx.navigateTo({
@@ -36,25 +48,21 @@ Page({
     });
   },
   tabChange(e) {
-    console.log("tab change", e);
+    const index = e.detail.index;
+    console.log(index);
     this.setData({
-      tabIndex: e.detail.index
+      tabIndex: index
     });
-    wx.request({
-      url: "https://api.ofzhiyuan.wang/haha", //仅为示例，并非真实的接口地址
-      success: function(res) {
-        console.log(res);
-      }
-    });
-    console.log(this.data.tabIndex);
+    if (index === 1) {
+      this.getTasks();
+    }
   },
   doneTap(e) {
-    console.log(e.currentTarget.dataset.index);
     let index = e.currentTarget.dataset.index;
     const tasks = this.data.tasks;
-    tasks[index].done = true;
+    tasks[index].done = !tasks[index].done;
     this.setData({
-      tasks: tasks
+      tasks
     });
   },
   slideButtonTap(e) {
@@ -65,8 +73,9 @@ Page({
     });
   },
   showAddTask(e) {
+    
     this.setData({
-      showAddTaskDialog: true
+      show: true
     });
   },
   confirmAddTask(e) {
@@ -74,6 +83,23 @@ Page({
       showAddTaskDialog: false
     });
   },
+
+  getTasks() {
+    http.get("/tasks").then(res => {
+      this.setData({
+        tasks: res.data.data
+      });
+    });
+  },
+
+  open: function () {
+    this.setData({
+        show: true
+    })
+},
+buttontap(e) {
+    console.log(e.detail)
+},
   onLoad: function() {},
   getUserInfo: function(e) {}
 });
