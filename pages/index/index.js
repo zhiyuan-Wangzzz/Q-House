@@ -4,6 +4,7 @@ Page({
     tasks: {},
     tabIndex: 0,
     showAddTaskDialog: false,
+    taskContent: "",
     list: [
       {
         text: "题库",
@@ -29,18 +30,18 @@ Page({
     dialogButtons: [{ text: "取消" }, { text: "确定" }],
 
     show: false,
-        buttons: [
-            {
-                type: 'default',
-                text: '取消',
-                value: 0
-            },
-            {
-                type: 'primary',
-                text: '确认',
-                value: 1
-            }
-        ]
+    buttons: [
+      {
+        type: "default",
+        text: "取消",
+        value: 0
+      },
+      {
+        type: "primary",
+        text: "确认",
+        value: 1
+      }
+    ]
   },
   tapMath() {
     wx.navigateTo({
@@ -73,14 +74,8 @@ Page({
     });
   },
   showAddTask(e) {
-    
     this.setData({
-      show: true
-    });
-  },
-  confirmAddTask(e) {
-    this.setData({
-      showAddTaskDialog: false
+      showAddTaskDialog: true
     });
   },
 
@@ -92,14 +87,48 @@ Page({
     });
   },
 
-  open: function () {
+  open: function() {
     this.setData({
-        show: true
-    })
-},
-buttontap(e) {
-    console.log(e.detail)
-},
+      show: true
+    });
+  },
+  buttontap(e) {
+    if (e.detail.index === 1 && this.data.taskContent.trim()) {
+      console.log("add task");
+      const data = { content: this.data.taskContent, status: 0 };
+      http
+        .post("/tasks", data)
+        .then(res => {
+          console.log(res);
+          const tasks = this.data.tasks;
+          tasks[0].push(res.data.data);
+          this.setData({
+            tasks
+          });
+        })
+        .catch(err => console.log(err));
+    }
+    this.setData({
+      showAddTaskDialog: false,
+      taskConent: ""
+    });
+  },
+
+  taskInput(e) {
+    this.setData({
+      taskContent: e.detail.value
+    });
+  },
+
+  checkboxTap(e) {
+    const indexStr = e.detail.value;
+    console.log(indexStr);
+    const indexArr = indexStr.split(" ");
+    const tasks = this.data.tasks;
+    const task = tasks[indexArr[0]][indexArr[1]];
+    task.status = +e.detail.checked;
+    http.put("/tasks", { id: task._id, status: task.status });
+  },
   onLoad: function() {},
   getUserInfo: function(e) {}
 });

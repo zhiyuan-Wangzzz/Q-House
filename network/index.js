@@ -27,4 +27,9 @@ function post(url, data) {
   const fullUrl = baseUrl + url;
   return request("POST", fullUrl, data);
 }
-export { request, get, post };
+function put(url,data){
+  const fullUrl = baseUrl + url;
+  return request("PUT", fullUrl, data);
+
+}
+export { request, get, post,put };

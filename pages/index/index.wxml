@@ -20,20 +20,22 @@
       </mp-slideview>
     </view>
   </view> -->
-  <view wx:for="{{tasks}}">
+  <view class="task-container">
+  <view wx:for="{{tasks}}" wx:for-index="groupIdx">
     <mp-cells title="{{item[0].createdAt}}">
-      <mp-checkbox-group prop="radio" multi="{{true}}" bindchange="radioChange">
-        <mp-checkbox wx:for="{{item}}" label="{{item.content}}" checked="{{item.status===1}}"></mp-checkbox>
+      <mp-checkbox-group prop="radio" multi="{{true}}">
+        <mp-checkbox wx:for="{{item}}" value="{{groupIdx+' '+index}}" label="{{item.content}}" checked="{{item.status===1}}" bindchange="checkboxTap"></mp-checkbox>
       </mp-checkbox-group>
     </mp-cells>
   </view>
+  </view>
 </view>
 <mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>
-<mp-halfScreenDialog  bindbuttontap="buttontap" show="{{show}}" maskClosable="{{true}}" buttons="{{buttons}}">
+<mp-halfScreenDialog bindbuttontap="buttontap" show="{{showAddTaskDialog}}" maskClosable="{{true}}" buttons="{{buttons}}">
   <view slot="title">添加任务</view>
   <view slot="desc">
     <mp-cell>
-      <input bindinput="formInputChange" data-field="qq" class="weui-input" placeholder="输入任务内容" />
+      <input focus="{{showAddTaskDialog}}" bindinput="taskInput" class="weui-input" placeholder="输入任务内容" />
     </mp-cell>
   </view>
 </mp-halfScreenDialog>
