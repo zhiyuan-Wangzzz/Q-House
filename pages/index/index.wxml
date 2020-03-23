@@ -30,7 +30,6 @@
   </view>
   </view>
 </view>
-<mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar>
 <mp-halfScreenDialog bindbuttontap="buttontap" show="{{showAddTaskDialog}}" maskClosable="{{true}}" buttons="{{buttons}}">
   <view slot="title">添加任务</view>
   <view slot="desc">
@@ -39,3 +38,5 @@
     </mp-cell>
   </view>
 </mp-halfScreenDialog>
+
+<!-- <mp-tabbar ext-class="tabbar" style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange" current="{{tabIndex}}"></mp-tabbar> -->
